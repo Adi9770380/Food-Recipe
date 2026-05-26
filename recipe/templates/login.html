@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+ <main class="flex-fill d-flex align-items-start pt-4">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-5">
+                <div class="card shadow-lg border-0">
+                
+                    <div class="card-body p-4">
+
+                        <h1 class="text-center fw-bold mb-4 text-danger">
+                            Login
+                        </h1>
+
+                        <form method="POST">
+
+                            {% csrf_token %}
+
+                            <!-- Username -->
+                            <div class="mb-3">
+
+                                <label class="form-label fw-bold">
+                                    Username
+                                </label>
+
+                                <input type="text"
+                                       name="username"
+                                       class="form-control py-3"
+                                       placeholder="Enter username">
+
+                            </div>
+
+                            <!-- Password -->
+                            <div class="mb-3">
+
+                                <label class="form-label fw-bold">
+                                    Password
+                                </label>
+
+                                <input type="password"
+                                       name="password"
+                                       class="form-control p-3"
+                                       placeholder="Enter password">
+
+                            </div>
+
+                            <!-- Button -->
+                            <button class="btn btn-danger w-100 py-2 fw-bold">
+
+                                Login
+
+                            </button>
+
+                            <!-- Signup -->
+                            <p class="text-center mt-3 text-dark">
+
+                                Don't have an account?
+
+                                <a href="{% url 'signup' %}"
+                                   class="text-danger fw-bold text-decoration-none">
+
+                                    Signup
+
+                                </a>
+
+                            </p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}

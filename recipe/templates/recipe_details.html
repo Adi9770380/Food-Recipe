@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div class="container mt-5 px-4">
+
+    <!-- IMAGE (NO ROUND) -->
+    {% if recipe.recipe_image %}
+
+    <div class="mb-4"
+         style="width:100%; height:350px; overflow:hidden;">
+
+        <img src="{{ recipe.recipe_image.url }}"
+             style="width:100%; height:100%; object-fit:cover; object-position:center; border-radius:0;">
+    </div>
+
+    {% endif %}
+
+    <!-- TITLE -->
+    <h2 class="fw-bold text-dark mb-3">
+        {{ recipe.recipe_name }}
+    </h2>
+
+    <!-- DESCRIPTION -->
+    <p class="fs-5 text-dark"
+       style="white-space: pre-line; line-height:1.7;">
+        {{ recipe.recipe_description }}
+    </p>
+
+    <!-- BUTTONS -->
+    <div class="mt-4 d-flex gap-2 flex-wrap">
+
+        <a href="{% url 'home' %}" class="btn btn-outline-dark px-4">
+            ← Back
+        </a>
+
+        {% if request.user == recipe.user %}
+
+        <a href="{% url 'update_recipe' recipe.id %}" class="btn btn-warning px-4">
+            Update
+        </a>
+
+        <a href="{% url 'delete_recipe' recipe.id %}"
+           class="btn btn-danger px-4"
+           onclick="return confirm('Delete this recipe?')">
+            Delete
+        </a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

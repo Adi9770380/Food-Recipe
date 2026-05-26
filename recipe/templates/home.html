@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block start %}
+
+
+<div class="hero-section pt-5 pb-4">
+
+    <div class="container">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-md-8 text-white">
+
+                <h1 class="display-4 fw-bold">
+                    Welcome to RecipeHub
+                </h1>
+
+                <p class="fs-5 mt-3">
+                    Discover delicious fast food and Chinese recipes
+                    made with simple ingredients and amazing flavors.
+                </p>
+
+                <!-- SEARCH -->
+                <form method="GET" class="d-flex justify-content-center mt-4">
+
+                    <input type="search"
+                           name="search"
+                           class="form-control w-50 me-2 p-2"
+                           placeholder="Search your favorite recipe"
+                           value="{{ request.GET.search }}">
+
+                    <button class="btn btn-danger px-4">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container-fluid mt-2 px-4">
+
+    <h2 class="text-center fw-bold text-white mb-3">
+        Popular Recipes
+    </h2>
+
+     <div class="row g-4">
+
+        {% for recipe in recipes %}
+
+        <div class="col-12 col-sm-6 col-md-3">
+
+            <div class="card h-100 shadow border-0">
+
+                <img src="{{ recipe.recipe_image.url }}"
+                     class="card-img-top"
+                     style="height: 200px; object-fit: cover;">
+
+                <div class="card-body">
+
+                    <h5 class="card-title text-center fw-bold">
+                        {{ recipe.recipe_name }}
+                    </h5>
+
+                    <a href="{% url 'recipe_details' recipe.id %}"
+                       class="btn btn-danger w-100">
+                        View Recipe
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

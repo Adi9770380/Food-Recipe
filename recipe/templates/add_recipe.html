@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block start %}
+
+<main class="flex-fill d-flex align-items-start">
+
+    <div class="container mt-2">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-7 col-lg-5">
+
+                <div class="card shadow border-0">
+
+                    <div class="card-body p-4">
+
+                        <h2 class="text-center fw-bold mb-4 text-danger">
+                            Add Recipe
+                        </h2>
+
+                        <form method="POST" enctype="multipart/form-data">
+
+                            {% csrf_token %}
+
+                            <!-- Recipe Name -->
+                            <div class="mb-3">
+
+                                <label class="form-label fw-semibold">
+                                    Recipe Name
+                                </label>
+
+                                <input type="text"
+                                       name="recipe_name"
+                                       class="form-control py-3"
+                                       placeholder="Enter recipe name"
+                                       required>
+
+                            </div>
+
+                            <!-- Recipe Description -->
+                            <div class="mb-3">
+
+                                <label class="form-label fw-semibold">
+                                    Recipe Description
+                                </label>
+
+                                <textarea name="recipe_description"
+                                          class="form-control py-3"
+                                          rows="4"
+                                          placeholder="Enter recipe description"
+                                          required></textarea>
+
+                            </div>
+
+                            <!-- Recipe Image -->
+                            <div class="mb-4">
+
+                                <label class="form-label fw-semibold">
+                                    Recipe Image
+                                </label>
+
+                                <input type="file"
+                                       name="recipe_image"
+                                       class="form-control py-3"
+                                       accept="image/*">
+
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit"
+                                    class="btn btn-danger w-100 py-3 fw-bold">
+                                Add Recipe
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
